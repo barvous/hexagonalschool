@@ -5,7 +5,7 @@ import java.time.Period;
 
 public class Person {
 
-    private String cpf; // TODO: Create a ValueObject for CPF
+    private CPF cpf;
     private String fullName;
     public LocalDate birthdate;
 
@@ -16,11 +16,11 @@ public class Person {
     }
 
     public String getCpf() {
-        return cpf;
+        return cpf.getCpfValue();
     }
 
     public void setCpf(String cpf) {
-        this.cpf = cpf.toUpperCase();
+        this.cpf = new CPF(cpf);
     }
 
     public String getFullName() {
