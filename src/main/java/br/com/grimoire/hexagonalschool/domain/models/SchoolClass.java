@@ -11,23 +11,24 @@ public class SchoolClass {
     private String id;
     private String name;
     private String description;
-    // TODO: criar classe Teacher
-    // private Teacher teacher;
+    private Teacher teacher;
     private Duration completionTime;
     private LocalDateTime completionForecast;
 
-    public SchoolClass(String id, String name, Duration completionTime) {
+    public SchoolClass(String id, String name, Teacher teacher, Duration completionTime) {
         this.id = id;
         this.name = name;
+        this.teacher = teacher;
         this.completionTime = completionTime;
         setCompletionTime(completionTime);
 
     }
 
-    public SchoolClass(String id, String name, String description, Duration completionTime) {
+    public SchoolClass(String id, String name, String description, Teacher teacher, Duration completionTime) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.teacher = teacher;
         this.completionTime = completionTime;
         setCompletionTime(completionTime);
     }
@@ -64,6 +65,14 @@ public class SchoolClass {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     public Duration getCompletionTime() {
