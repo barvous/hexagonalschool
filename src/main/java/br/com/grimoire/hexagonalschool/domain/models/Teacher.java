@@ -2,6 +2,8 @@ package br.com.grimoire.hexagonalschool.domain.models;
 
 import java.time.LocalDate;
 
+import br.com.grimoire.hexagonalschool.domain.models.exception.InvalidSalaryException;
+
 public class Teacher extends Person {
 
     // If salary has more complex logic, i would create a class for it
@@ -21,12 +23,11 @@ public class Teacher extends Person {
     public void setSalary(Double salary) {
 
         if (salary == null) {
-            throw new RuntimeException("The salary must not be null");
+            throw new InvalidSalaryException("The salary must not be null");
         }
 
         if (salary < MINIMUM_WAGE) {
-            // TODO: Create a custom exception for this
-            throw new RuntimeException("The provided salary is lower than the minimum wage");
+            throw new InvalidSalaryException("The provided salary is lower than the minimum wage");
         }
         this.salary = salary;
     }
