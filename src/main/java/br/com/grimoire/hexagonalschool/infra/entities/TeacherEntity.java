@@ -13,21 +13,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "person")
+@Table(name = "teacher")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonEntity {
+public class TeacherEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_PERSON")
+    @Column(name = "ID_TEACHER")
     private Long id;
 
-    @Column(name = "FULL_NAME_PERSON")
+    @Column(name = "CPF_TEACHER")
+    private String cpf;
+
+    @Column(name = "FULL_NAME_TEACHER")
     private String fullName;
 
-    @Column(name = "BIRTHDATE_PERSON")
+    @Column(name = "BIRTHDATE_TEACHER")
     private LocalDateTime birthDate;
-
 }
