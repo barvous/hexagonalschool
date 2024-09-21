@@ -11,3 +11,7 @@ public class HexagonalschoolApplication {
 	}
 
 }
+
+//TODO: Create ports for the domain classes
+//TODO: Create adapters for the domain classes
+//TODO: Create endpoints to consume the domain entities
