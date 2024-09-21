@@ -29,7 +29,14 @@ public class TeacherEntity {
 
     @Column(name = "FULL_NAME_TEACHER")
     private String fullName;
+    
+    @Column(name = "EMAIL_TEACHER")
+    private String email;
 
     @Column(name = "BIRTHDATE_TEACHER")
     private LocalDateTime birthDate;
+
+    @Column(name = "FLAG_TEACHER_ACTIVE")
+    private boolean teacherActive;
+
 }

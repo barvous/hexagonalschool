@@ -42,6 +42,8 @@ public class SchoolClassEntity {
 
     @Column(name = "COMPLETION_FORECAST")
     private LocalDateTime completionForecast;
-
+    
+    @Column(name = "FLAG_FINISHED")
+    private boolean finished;
 
 }

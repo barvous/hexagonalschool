@@ -30,8 +30,14 @@ public class StudentEntity {
     @Column(name = "FULL_NAME_STUDENT")
     private String fullName;
 
+    @Column(name = "EMAIL_STUDENT")
+    private String email;
+
     @Column(name = "BIRTHDATE_STUDENT")
     private LocalDateTime birthDate;
+
+    @Column(name = "FLAG_STUDENT_ACTIVE")
+    private boolean studentActive;
 
     //SchoolClass and Student its a n:n relationship.
     //TODO: Create a middle-class between these two
