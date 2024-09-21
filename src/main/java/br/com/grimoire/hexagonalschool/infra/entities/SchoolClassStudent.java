@@ -16,5 +16,5 @@ import lombok.NoArgsConstructor;
 public class SchoolClassStudent {
 
     @EmbeddedId
-    private SchoolClassStudentPK schoolClassStudentPK = new SchoolClassStudentPK();
+    private SchoolClassStudentPK id = new SchoolClassStudentPK();
 }

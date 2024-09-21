@@ -2,11 +2,15 @@ package br.com.grimoire.hexagonalschool.infra.entities;
 
 import java.time.LocalDateTime;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,10 +43,7 @@ public class StudentEntity {
     @Column(name = "FLAG_STUDENT_ACTIVE")
     private boolean studentActive;
 
-    //SchoolClass and Student its a n:n relationship.
-    //TODO: Create a middle-class between these two
-
-    // @OneToMany(mappedBy = "student")
-    // private List<SchoolClassEntity> listSchoolClass = new ArrayList<>();
+    @OneToMany(mappedBy = "id.studentEntity")
+    private List<SchoolClassStudent> listSchoolClass = new ArrayList<>();
 
 }
