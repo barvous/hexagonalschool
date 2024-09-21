@@ -3,7 +3,7 @@ package br.com.grimoire.hexagonalschool.domain.models;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Person {
+public abstract class Person {
 
     private CPF cpf;
     private String fullName;
