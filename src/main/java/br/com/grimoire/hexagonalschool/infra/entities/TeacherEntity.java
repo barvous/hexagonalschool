@@ -1,7 +1,8 @@
 package br.com.grimoire.hexagonalschool.infra.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
+import br.com.grimoire.hexagonalschool.domain.models.Teacher;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,14 +30,21 @@ public class TeacherEntity {
 
     @Column(name = "FULL_NAME_TEACHER")
     private String fullName;
-    
+
     @Column(name = "EMAIL_TEACHER")
     private String email;
 
+    @Column(name = "SALARY_TEACHER")
+    private Double salary;
+
     @Column(name = "BIRTHDATE_TEACHER")
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
 
     @Column(name = "FLAG_TEACHER_ACTIVE")
     private boolean teacherActive;
 
+    public Teacher toTeacher() {
+        Teacher teacher = new Teacher(id, cpf, fullName, birthDate, salary);
+        return teacher;
+    }
 }

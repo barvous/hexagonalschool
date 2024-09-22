@@ -1,21 +1,17 @@
 package br.com.grimoire.hexagonalschool.domain.models;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
+import java.sql.Time;
 
 public class SchoolClass {
 
-    private static final int HOURS_OF_STUDY_PER_DAY = 3;
 
     private String id;
     private String name;
     private String description;
     private Teacher teacher;
-    private Duration completionTime;
-    private LocalDateTime completionForecast;
+    private Time completionTime;
 
-    public SchoolClass(String id, String name, Teacher teacher, Duration completionTime) {
+    public SchoolClass(String id, String name, Teacher teacher, Time completionTime) {
         this.id = id;
         this.name = name;
         this.teacher = teacher;
@@ -24,23 +20,13 @@ public class SchoolClass {
 
     }
 
-    public SchoolClass(String id, String name, String description, Teacher teacher, Duration completionTime) {
+    public SchoolClass(String id, String name, String description, Teacher teacher, Time completionTime) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.teacher = teacher;
         this.completionTime = completionTime;
         setCompletionTime(completionTime);
-    }
-
-    LocalDateTime calculateCompletionForecast(Duration completionTime) {
-
-        long classTotalHours = completionTime.toHours();
-        long classTotalDays = (long) Math.ceil((double) classTotalHours / HOURS_OF_STUDY_PER_DAY);
-
-        LocalDateTime completionDate = LocalDateTime.now().plus(classTotalDays, ChronoUnit.DAYS);
-
-        return completionDate;
     }
 
     public String getId() {
@@ -75,16 +61,13 @@ public class SchoolClass {
         this.teacher = teacher;
     }
 
-    public Duration getCompletionTime() {
+    public Time getCompletionTime() {
         return completionTime;
     }
 
-    private void setCompletionTime(Duration completionTime) {
-        this.completionForecast = calculateCompletionForecast(completionTime);
+    private void setCompletionTime(Time completionTime) {
+        this.completionTime = completionTime;
     }
 
-    public LocalDateTime getCompletionForecast() {
-        return completionForecast;
-    }
 
 }

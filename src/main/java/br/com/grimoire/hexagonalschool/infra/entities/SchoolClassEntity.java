@@ -3,6 +3,7 @@ package br.com.grimoire.hexagonalschool.infra.entities;
 import java.sql.Time;
 import java.time.LocalDateTime;
 
+import br.com.grimoire.hexagonalschool.domain.models.SchoolClass;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SchoolClassEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_SCHOOL_CLASS")
@@ -42,8 +43,13 @@ public class SchoolClassEntity {
 
     @Column(name = "COMPLETION_FORECAST")
     private LocalDateTime completionForecast;
-    
+
     @Column(name = "FLAG_FINISHED")
     private boolean finished;
+
+    public SchoolClass toSchoolClass() {
+        SchoolClass schoolClass = new SchoolClass(description, name, teacher.toTeacher(), completionTime);
+        return schoolClass;
+    }
 
 }
