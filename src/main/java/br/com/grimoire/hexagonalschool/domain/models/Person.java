@@ -5,11 +5,13 @@ import java.time.Period;
 
 public abstract class Person {
 
+    public Long id;
     private CPF cpf;
     private String fullName;
     public LocalDate birthdate;
 
-    public Person(String cpf, String fullName, LocalDate birthdate) {
+    public Person(Long id, String cpf, String fullName, LocalDate birthdate) {
+        this.id = id;
         setCpf(cpf);
         setFullName(fullName);
         this.birthdate = birthdate;

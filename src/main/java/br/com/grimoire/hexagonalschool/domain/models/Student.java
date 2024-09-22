@@ -8,12 +8,8 @@ public class Student extends Person {
 
     List<SchoolClass> listSchoolClass = new ArrayList<>();
 
-    public Student(String cpf, String fullName, LocalDate birthdate) {
-        super(cpf, fullName, birthdate);
-    }
-
-    public Student(String cpf, String fullName, LocalDate birthdate, List<SchoolClass> listSchoolClass) {
-        super(cpf, fullName, birthdate);
+    public Student(Long id, String cpf, String fullName, LocalDate birthdate, List<SchoolClass> listSchoolClass) {
+        super(id, cpf, fullName, birthdate);
         this.listSchoolClass = listSchoolClass;
     }
 
