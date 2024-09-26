@@ -11,8 +11,9 @@ public class Teacher extends Person {
 
     private Double salary;
 
-    public Teacher(Long id, String cpf, String fullName, LocalDate birthdate, Double salary) {
-        super(id, cpf, fullName, birthdate);
+    public Teacher(Long id, String cpf, String fullName, String email, LocalDate birthdate, Double salary,
+            boolean userActive) {
+        super(id, cpf, fullName, email, birthdate, userActive);
         this.salary = salary;
     }
 

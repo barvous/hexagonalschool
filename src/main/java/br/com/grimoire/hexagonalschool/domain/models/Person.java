@@ -8,13 +8,17 @@ public abstract class Person {
     public Long id;
     private CPF cpf;
     private String fullName;
-    public LocalDate birthdate;
+    private String email;
+    private LocalDate birthdate;
+    private boolean userActive;
 
-    public Person(Long id, String cpf, String fullName, LocalDate birthdate) {
+    public Person(Long id, String cpf, String fullName, String email, LocalDate birthdate, boolean userActive) {
         this.id = id;
         setCpf(cpf);
         setFullName(fullName);
+        this.email = email;
         this.birthdate = birthdate;
+        this.userActive = userActive;
     }
 
     public String getCpf() {
@@ -31,6 +35,30 @@ public abstract class Person {
 
     public void setFullName(String fullName) {
         this.fullName = fullName.toUpperCase();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public boolean isUserActive() {
+        return userActive;
+    }
+
+    public void setUserActive(boolean userActive) {
+        this.userActive = userActive;
     }
 
     Integer getAge() {

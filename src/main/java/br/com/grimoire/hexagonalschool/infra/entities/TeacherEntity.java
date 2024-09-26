@@ -43,8 +43,18 @@ public class TeacherEntity {
     @Column(name = "FLAG_TEACHER_ACTIVE")
     private boolean teacherActive;
 
+    public TeacherEntity(Teacher teacher) {
+        this.id = teacher.id;
+        this.cpf = teacher.getCpf();
+        this.fullName = teacher.getFullName();
+        this.email = teacher.getEmail();
+        this.salary = teacher.getSalary();
+        this.birthDate = teacher.getBirthdate();
+        this.teacherActive = teacher.isUserActive();
+    }
+
     public Teacher toTeacher() {
-        Teacher teacher = new Teacher(id, cpf, fullName, birthDate, salary);
-        return teacher;
+        return new Teacher(id, cpf, fullName, email, birthDate, salary, teacherActive);
+
     }
 }

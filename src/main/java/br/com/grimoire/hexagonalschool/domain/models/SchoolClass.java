@@ -4,14 +4,14 @@ import java.sql.Time;
 
 public class SchoolClass {
 
-
-    private String id;
+    private Long id;
     private String name;
     private String description;
     private Teacher teacher;
     private Time completionTime;
+    private boolean finished;
 
-    public SchoolClass(String id, String name, Teacher teacher, Time completionTime) {
+    public SchoolClass(Long id, String name, Teacher teacher, Time completionTime) {
         this.id = id;
         this.name = name;
         this.teacher = teacher;
@@ -20,7 +20,7 @@ public class SchoolClass {
 
     }
 
-    public SchoolClass(String id, String name, String description, Teacher teacher, Time completionTime) {
+    public SchoolClass(Long id, String name, String description, Teacher teacher, Time completionTime) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -29,11 +29,11 @@ public class SchoolClass {
         setCompletionTime(completionTime);
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -69,5 +69,12 @@ public class SchoolClass {
         this.completionTime = completionTime;
     }
 
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
 
 }
