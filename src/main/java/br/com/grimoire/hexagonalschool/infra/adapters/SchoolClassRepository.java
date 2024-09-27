@@ -48,7 +48,7 @@ public class SchoolClassRepository implements SchoolClassRepositoryPort {
 
         SchoolClass schoolClassDB = findById(idSchoolClass);
 
-        BeanUtils.copyProperties(schoolClass, schoolClassDB);
+        BeanUtils.copyProperties(schoolClass, schoolClassDB, "id");
 
         try {
 

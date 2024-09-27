@@ -1,5 +1,7 @@
 package br.com.grimoire.hexagonalschool.infra.adapters;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,11 @@ public class TeacherRepository implements TeacherRespositoryPort {
     private final TeacherRepositoryJPA teacherRepositoryJPA;
 
     @Override
+    public List<Teacher> findAll() {
+        return teacherRepositoryJPA.findAll().stream().map(TeacherEntity::toTeacher).toList();
+    }
+
+    @Override
     public Teacher findById(Long idTeacher) {
         return teacherRepositoryJPA.findById(idTeacher)
                 .orElseThrow(() -> new NotFoundException("Teacher not founded")).toTeacher();
@@ -31,7 +38,6 @@ public class TeacherRepository implements TeacherRespositoryPort {
 
     @Override
     public Teacher save(Teacher teacher) {
-        teacher.id = null;
 
         try {
             return teacherRepositoryJPA.save(new TeacherEntity(teacher)).toTeacher();
@@ -46,7 +52,7 @@ public class TeacherRepository implements TeacherRespositoryPort {
 
         Teacher teacherDB = findById(idTeacher);
 
-        BeanUtils.copyProperties(teacher, teacherDB);
+        BeanUtils.copyProperties(teacher, teacherDB, "id");
 
         try {
             teacherRepositoryJPA.save(new TeacherEntity(teacherDB));
@@ -57,7 +63,7 @@ public class TeacherRepository implements TeacherRespositoryPort {
     }
 
     @Override
-    public void delete(Long idTeacher) {
+    public void deleteById(Long idTeacher) {
         findById(idTeacher);
 
         try {

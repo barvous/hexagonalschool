@@ -48,7 +48,7 @@ public class StudentEntity {
     private List<SchoolClassStudent> listSchoolClass = new ArrayList<>();
 
     public StudentEntity(Student student) {
-        this.id = student.id;
+        this.id = student.getId();
         this.cpf = student.getCpf();
         this.fullName = student.getFullName();
         this.email = student.getEmail();
