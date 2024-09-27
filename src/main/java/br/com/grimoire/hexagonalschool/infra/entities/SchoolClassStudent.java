@@ -17,4 +17,9 @@ public class SchoolClassStudent {
 
     @EmbeddedId
     private SchoolClassStudentPK id = new SchoolClassStudentPK();
+
+    public SchoolClassStudent(StudentEntity studentEntity, SchoolClassEntity schoolClassEntity) {
+        this.id = new SchoolClassStudentPK(schoolClassEntity, studentEntity);
+    }
+
 }

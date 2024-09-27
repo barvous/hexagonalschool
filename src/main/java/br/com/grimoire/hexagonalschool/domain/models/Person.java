@@ -1,6 +1,6 @@
 package br.com.grimoire.hexagonalschool.domain.models;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
 
 public abstract class Person {
@@ -9,10 +9,10 @@ public abstract class Person {
     private CPF cpf;
     private String fullName;
     private String email;
-    private LocalDate birthdate;
+    private LocalDateTime birthdate;
     private boolean userActive;
 
-    public Person(Long id, String cpf, String fullName, String email, LocalDate birthdate, boolean userActive) {
+    public Person(Long id, String cpf, String fullName, String email, LocalDateTime birthdate, boolean userActive) {
         this.id = id;
         setCpf(cpf);
         setFullName(fullName);
@@ -45,11 +45,11 @@ public abstract class Person {
         this.email = email;
     }
 
-    public LocalDate getBirthdate() {
+    public LocalDateTime getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(LocalDate birthdate) {
+    public void setBirthdate(LocalDateTime birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -62,9 +62,9 @@ public abstract class Person {
     }
 
     Integer getAge() {
-        LocalDate currentDate = LocalDate.now();
+        LocalDateTime currentDate = LocalDateTime.now();
 
-        Period period = Period.between(birthdate, currentDate);
+        Period period = Period.between(birthdate.toLocalDate(), currentDate.toLocalDate());
 
         return period.getYears();
     }
