@@ -1,4 +1,4 @@
-package br.com.grimoire.hexagonalschool.application.controllers;
+package br.com.grimoire.hexagonalschool.application.controllers.exception;
 
 import java.util.Date;
 
@@ -10,6 +10,7 @@ import org.springframework.web.client.HttpServerErrorException.InternalServerErr
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import br.com.grimoire.hexagonalschool.domain.models.exception.BadRequestException;
+import br.com.grimoire.hexagonalschool.domain.models.exception.InvalidSalaryException;
 import br.com.grimoire.hexagonalschool.domain.models.exception.NotFoundException;
 import br.com.grimoire.hexagonalschool.domain.models.exception.StandardError;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,6 +23,21 @@ public class ExceptionController {
 
         String message = e.getMessage();
         String error = "Internal Server Error";
+
+        if (message == null)
+            message = e.toString();
+
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+        StandardError err = new StandardError(error, status.value(), message, new Date());
+        err.setPath(request.getRequestURI());
+        return ResponseEntity.status(status).body(err);
+    }
+    
+    @ExceptionHandler(InvalidSalaryException.class)
+    public ResponseEntity<StandardError> invalidSalaryException(InvalidSalaryException e, HttpServletRequest request) {
+
+        String message = e.getMessage();
+        String error = "Invalid Salary Error";
 
         if (message == null)
             message = e.toString();

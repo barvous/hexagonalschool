@@ -41,7 +41,7 @@ public class StudentRepository implements StudentRepositoryPort {
 
     @Override
     public Student save(Student student) {
-        student.id = null;
+        student.setId(null);
 
         try {
             return studentRepositoryJPA.save(new StudentEntity(student)).toStudent();
@@ -55,7 +55,7 @@ public class StudentRepository implements StudentRepositoryPort {
     public void update(Long idStudent, Student student) {
         Student studentDB = findById(idStudent);
 
-        BeanUtils.copyProperties(student, studentDB);
+        BeanUtils.copyProperties(student, studentDB, "id");
 
         try {
             studentRepositoryJPA.save(new StudentEntity(studentDB));

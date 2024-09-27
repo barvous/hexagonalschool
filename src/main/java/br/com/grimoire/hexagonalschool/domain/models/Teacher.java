@@ -14,7 +14,7 @@ public class Teacher extends Person {
     public Teacher(Long id, String cpf, String fullName, String email, LocalDateTime birthdate, Double salary,
             boolean userActive) {
         super(id, cpf, fullName, email, birthdate, userActive);
-        this.salary = salary;
+        setSalary(salary);
     }
 
     public Double getSalary() {

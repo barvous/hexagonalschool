@@ -5,7 +5,7 @@ import java.time.Period;
 
 public abstract class Person {
 
-    public Long id;
+    private Long id;
     private CPF cpf;
     private String fullName;
     private String email;
@@ -19,6 +19,14 @@ public abstract class Person {
         this.email = email;
         this.birthdate = birthdate;
         this.userActive = userActive;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCpf() {

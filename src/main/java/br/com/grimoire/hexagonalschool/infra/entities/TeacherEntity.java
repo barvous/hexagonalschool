@@ -44,7 +44,7 @@ public class TeacherEntity {
     private boolean teacherActive;
 
     public TeacherEntity(Teacher teacher) {
-        this.id = teacher.id;
+        this.id = teacher.getId();
         this.cpf = teacher.getCpf();
         this.fullName = teacher.getFullName();
         this.email = teacher.getEmail();
