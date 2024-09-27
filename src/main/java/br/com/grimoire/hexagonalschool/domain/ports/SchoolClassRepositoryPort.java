@@ -6,8 +6,6 @@ public interface SchoolClassRepositoryPort {
     
     SchoolClass findById(Long idSchoolClass);
 
-    SchoolClass findByCpf(String cpf);
-
     SchoolClass save(SchoolClass schoolClass);
 
     void update(Long idSchoolClass, SchoolClass schoolClass);

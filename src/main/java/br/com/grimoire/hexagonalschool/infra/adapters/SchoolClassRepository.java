@@ -25,14 +25,6 @@ public class SchoolClassRepository implements SchoolClassRepositoryPort {
     }
 
     @Override
-    public SchoolClass findByCpf(String cpf) {
-        SchoolClassEntity schoolClassEntity = schoolClassRepositoryJPA.findByCpf(cpf)
-                .orElseThrow(() -> new NotFoundException("School class not founded"));
-
-        return schoolClassEntity.toSchoolClass();
-    }
-
-    @Override
     public SchoolClass save(SchoolClass schoolClass) {
         // TODO: Create a DTO to register an school, so that i dont have do to this "set
         // null"
