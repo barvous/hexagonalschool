@@ -1,6 +1,6 @@
 package br.com.grimoire.hexagonalschool.domain.models;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
 
 public abstract class Person {
@@ -8,13 +8,17 @@ public abstract class Person {
     public Long id;
     private CPF cpf;
     private String fullName;
-    public LocalDate birthdate;
+    private String email;
+    private LocalDateTime birthdate;
+    private boolean userActive;
 
-    public Person(Long id, String cpf, String fullName, LocalDate birthdate) {
+    public Person(Long id, String cpf, String fullName, String email, LocalDateTime birthdate, boolean userActive) {
         this.id = id;
         setCpf(cpf);
         setFullName(fullName);
+        this.email = email;
         this.birthdate = birthdate;
+        this.userActive = userActive;
     }
 
     public String getCpf() {
@@ -33,10 +37,34 @@ public abstract class Person {
         this.fullName = fullName.toUpperCase();
     }
 
-    Integer getAge() {
-        LocalDate currentDate = LocalDate.now();
+    public String getEmail() {
+        return email;
+    }
 
-        Period period = Period.between(birthdate, currentDate);
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public LocalDateTime getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDateTime birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public boolean isUserActive() {
+        return userActive;
+    }
+
+    public void setUserActive(boolean userActive) {
+        this.userActive = userActive;
+    }
+
+    Integer getAge() {
+        LocalDateTime currentDate = LocalDateTime.now();
+
+        Period period = Period.between(birthdate.toLocalDate(), currentDate.toLocalDate());
 
         return period.getYears();
     }

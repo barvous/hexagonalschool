@@ -1,6 +1,6 @@
 package br.com.grimoire.hexagonalschool.domain.models;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,8 +8,10 @@ public class Student extends Person {
 
     List<SchoolClass> listSchoolClass = new ArrayList<>();
 
-    public Student(Long id, String cpf, String fullName, LocalDate birthdate, List<SchoolClass> listSchoolClass) {
-        super(id, cpf, fullName, birthdate);
+    public Student(Long id, String cpf, String fullName, String email, LocalDateTime birthdate,
+            List<SchoolClass> listSchoolClass,
+            boolean userActive) {
+        super(id, cpf, fullName, email, birthdate, userActive);
         this.listSchoolClass = listSchoolClass;
     }
 
@@ -29,8 +31,8 @@ public class Student extends Person {
         this.listSchoolClass.remove(schoolClass);
     }
 
-    public void deleteSchoolClassFromList(String schoolClassId) {
-        this.listSchoolClass.removeIf(predicate -> predicate.getId().equalsIgnoreCase(schoolClassId));
+    public void deleteSchoolClassFromList(Long schoolClassId) {
+        this.listSchoolClass.removeIf(predicate -> predicate.getId().longValue() == schoolClassId);
     }
 
 }

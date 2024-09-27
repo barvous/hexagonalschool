@@ -1,8 +1,8 @@
 package br.com.grimoire.hexagonalschool.infra.entities;
 
 import java.sql.Time;
-import java.time.LocalDateTime;
 
+import br.com.grimoire.hexagonalschool.domain.models.SchoolClass;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SchoolClassEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_SCHOOL_CLASS")
@@ -40,10 +40,21 @@ public class SchoolClassEntity {
     @Column(name = "COMPLETION_TIME_SCHOOL_CLASS")
     private Time completionTime;
 
-    @Column(name = "COMPLETION_FORECAST")
-    private LocalDateTime completionForecast;
-    
     @Column(name = "FLAG_FINISHED")
     private boolean finished;
+
+    public SchoolClassEntity(SchoolClass schoolClass) {
+        this.id = schoolClass.getId();
+        this.name = schoolClass.getName();
+        this.description = schoolClass.getDescription();
+        this.teacher = new TeacherEntity(schoolClass.getTeacher());
+        this.completionTime = schoolClass.getCompletionTime();
+        this.finished = schoolClass.isFinished();
+    }
+
+    public SchoolClass toSchoolClass() {
+        return new SchoolClass(id, name, description, teacher.toTeacher(), completionTime);
+
+    }
 
 }
