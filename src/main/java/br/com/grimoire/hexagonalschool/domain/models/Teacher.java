@@ -1,6 +1,6 @@
 package br.com.grimoire.hexagonalschool.domain.models;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import br.com.grimoire.hexagonalschool.domain.models.exception.InvalidSalaryException;
 
@@ -11,7 +11,7 @@ public class Teacher extends Person {
 
     private Double salary;
 
-    public Teacher(Long id, String cpf, String fullName, String email, LocalDate birthdate, Double salary,
+    public Teacher(Long id, String cpf, String fullName, String email, LocalDateTime birthdate, Double salary,
             boolean userActive) {
         super(id, cpf, fullName, email, birthdate, userActive);
         this.salary = salary;

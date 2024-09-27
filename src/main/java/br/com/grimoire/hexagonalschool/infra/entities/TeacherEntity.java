@@ -1,6 +1,6 @@
 package br.com.grimoire.hexagonalschool.infra.entities;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import br.com.grimoire.hexagonalschool.domain.models.Teacher;
 import jakarta.persistence.Column;
@@ -38,7 +38,7 @@ public class TeacherEntity {
     private Double salary;
 
     @Column(name = "BIRTHDATE_TEACHER")
-    private LocalDate birthDate;
+    private LocalDateTime birthDate;
 
     @Column(name = "FLAG_TEACHER_ACTIVE")
     private boolean teacherActive;
