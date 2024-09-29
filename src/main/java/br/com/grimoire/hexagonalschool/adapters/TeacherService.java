@@ -22,7 +22,6 @@ public class TeacherService implements TeacherServicePort {
         return teacherRespositoryPort.findAll().stream().map(ShowTeacherDTO::new).toList();
     }
 
-    // TODO: Create a DTO to show data for the user
     @Override
     public ShowTeacherDTO findById(Long idTeacher) {
         Teacher teacher = teacherRespositoryPort.findById(idTeacher);
