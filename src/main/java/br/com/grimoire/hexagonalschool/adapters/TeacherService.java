@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.com.grimoire.hexagonalschool.domain.dto.RegisterTeacherDTO;
+import br.com.grimoire.hexagonalschool.domain.dto.ShowTeacherDTO;
 import br.com.grimoire.hexagonalschool.domain.models.Teacher;
 import br.com.grimoire.hexagonalschool.domain.ports.TeacherRespositoryPort;
 import br.com.grimoire.hexagonalschool.domain.ports.TeacherServicePort;
@@ -17,19 +18,22 @@ public class TeacherService implements TeacherServicePort {
     private final TeacherRespositoryPort teacherRespositoryPort;
 
     @Override
-    public List<Teacher> findAll() {
-        return teacherRespositoryPort.findAll();
+    public List<ShowTeacherDTO> findAll() {
+        return teacherRespositoryPort.findAll().stream().map(ShowTeacherDTO::new).toList();
     }
 
     // TODO: Create a DTO to show data for the user
     @Override
-    public Teacher findById(Long idTeacher) {
-        return teacherRespositoryPort.findById(idTeacher);
+    public ShowTeacherDTO findById(Long idTeacher) {
+        Teacher teacher = teacherRespositoryPort.findById(idTeacher);
+        return new ShowTeacherDTO(teacher);
     }
 
     @Override
-    public Teacher save(RegisterTeacherDTO registerTeacherDTO) {
-        return teacherRespositoryPort.save(registerTeacherDTO.toTeacher());
+    public ShowTeacherDTO save(RegisterTeacherDTO registerTeacherDTO) {
+        Teacher teacherDB = teacherRespositoryPort.save(registerTeacherDTO.toTeacher());
+
+        return new ShowTeacherDTO(teacherDB);
 
     }
 
