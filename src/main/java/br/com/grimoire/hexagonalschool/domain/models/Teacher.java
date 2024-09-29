@@ -28,7 +28,7 @@ public class Teacher extends Person {
         }
 
         if (salary < MINIMUM_WAGE_IN_REAIS) {
-            throw new InvalidSalaryException("The provided salary is lower than the minimum wage");
+            throw new InvalidSalaryException("The provided salary is lower than the minimum wage. The minimum wage is R$" + MINIMUM_WAGE_IN_REAIS);
         }
         this.salary = salary;
     }

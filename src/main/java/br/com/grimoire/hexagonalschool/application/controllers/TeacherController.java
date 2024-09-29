@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.grimoire.hexagonalschool.adapters.TeacherService;
 import br.com.grimoire.hexagonalschool.domain.dto.RegisterTeacherDTO;
-import br.com.grimoire.hexagonalschool.domain.models.Teacher;
+import br.com.grimoire.hexagonalschool.domain.dto.ShowTeacherDTO;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -25,19 +25,19 @@ public class TeacherController {
     private final TeacherService teacherService;
 
     @GetMapping
-    public ResponseEntity<List<Teacher>> findAll() {
+    public ResponseEntity<List<ShowTeacherDTO>> findAll() {
 
-        List<Teacher> listTeacher = teacherService.findAll();
+        List<ShowTeacherDTO> listTeacher = teacherService.findAll();
 
         return ResponseEntity.ok().body(listTeacher);
     }
 
     @GetMapping(path = "/{id_teacher}")
-    public ResponseEntity<Teacher> findById(@PathVariable("id_teacher") Long idTeacher) {
+    public ResponseEntity<ShowTeacherDTO> findById(@PathVariable("id_teacher") Long idTeacher) {
 
-        Teacher teacherDB = teacherService.findById(idTeacher);
+        ShowTeacherDTO teacherDTO = teacherService.findById(idTeacher);
 
-        return ResponseEntity.ok().body(teacherDB);
+        return ResponseEntity.ok().body(teacherDTO);
     }
 
     @PostMapping
