@@ -20,6 +20,13 @@ public class SchoolClass {
 
     }
 
+    public SchoolClass(String name, String description, Time completionTime, boolean finished) {
+        this.name = name;
+        this.description = description;
+        this.completionTime = completionTime;
+        this.finished = finished;
+    }
+
     public SchoolClass(Long id, String name, String description, Teacher teacher, Time completionTime) {
         this.id = id;
         this.name = name;

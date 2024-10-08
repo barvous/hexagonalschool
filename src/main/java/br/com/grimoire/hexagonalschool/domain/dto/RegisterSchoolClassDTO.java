@@ -2,23 +2,22 @@ package br.com.grimoire.hexagonalschool.domain.dto;
 
 import java.sql.Time;
 
+import br.com.grimoire.hexagonalschool.domain.models.SchoolClass;
+
 public class RegisterSchoolClassDTO {
 
     private String name;
     private String description;
     private Long idTeacher;
-    private Time comppletionTime;
+    private Time completionTime;
     private boolean finished;
-    
-    public RegisterSchoolClassDTO() {
-    }
 
-    public RegisterSchoolClassDTO(String name, String description, Long idTeacher, Time comppletionTime,
+    public RegisterSchoolClassDTO(String name, String description, Long idTeacher, Time completionTime,
             boolean finished) {
         this.name = name;
         this.description = description;
         this.idTeacher = idTeacher;
-        this.comppletionTime = comppletionTime;
+        this.completionTime = completionTime;
         this.finished = finished;
     }
 
@@ -46,12 +45,12 @@ public class RegisterSchoolClassDTO {
         this.idTeacher = idTeacher;
     }
 
-    public Time getComppletionTime() {
-        return comppletionTime;
+    public Time getCompletionTime() {
+        return completionTime;
     }
 
-    public void setComppletionTime(Time comppletionTime) {
-        this.comppletionTime = comppletionTime;
+    public void setCompletionTime(Time completionTime) {
+        this.completionTime = completionTime;
     }
 
     public boolean isFinished() {
@@ -60,6 +59,11 @@ public class RegisterSchoolClassDTO {
 
     public void setFinished(boolean finished) {
         this.finished = finished;
+    }
+
+    public SchoolClass toSchoolClass() {
+        return new SchoolClass(name, description, completionTime, false);
+
     }
 
 }
