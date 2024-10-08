@@ -2,6 +2,8 @@ package br.com.grimoire.hexagonalschool.domain.dto;
 
 import java.sql.Time;
 
+import br.com.grimoire.hexagonalschool.domain.models.SchoolClass;
+
 public class ShowSchoolClassDTO {
     
     private Long id;
@@ -11,7 +13,14 @@ public class ShowSchoolClassDTO {
     private Time completionTime;
     private boolean finished;
 
-    public ShowSchoolClassDTO() {
+    public ShowSchoolClassDTO(SchoolClass schoolClass) {
+        this.id = schoolClass.getId();
+        this.name = schoolClass.getName();
+        this.description = schoolClass.getDescription();
+        this.teacher = new ShowTeacherDTO(schoolClass.getTeacher());
+        this.completionTime = schoolClass.getCompletionTime();
+        this.finished = schoolClass.isFinished();
+
     }
 
     public ShowSchoolClassDTO(Long id, String name, String description, ShowTeacherDTO teacher, Time completionTime,
