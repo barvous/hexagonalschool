@@ -1,5 +1,7 @@
 package br.com.grimoire.hexagonalschool.infra.adapters;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,15 @@ import lombok.RequiredArgsConstructor;
 public class SchoolClassRepository implements SchoolClassRepositoryPort {
 
     private final SchoolClassRepositoryJPA schoolClassRepositoryJPA;
-
+    
+    @Override
+    public List<SchoolClass> findAll() {
+        return schoolClassRepositoryJPA.findAll()
+        .stream()
+        .map(eachClass -> eachClass.toSchoolClass())
+        .toList();
+    }
+    
     @Override
     public SchoolClass findById(Long idSchoolClass) {
         SchoolClassEntity schoolClassEntity = schoolClassRepositoryJPA.findById(idSchoolClass)
