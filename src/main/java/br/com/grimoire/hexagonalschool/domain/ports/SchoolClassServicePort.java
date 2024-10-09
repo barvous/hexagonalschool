@@ -2,17 +2,18 @@ package br.com.grimoire.hexagonalschool.domain.ports;
 
 import java.util.List;
 
-import br.com.grimoire.hexagonalschool.domain.models.SchoolClass;
+import br.com.grimoire.hexagonalschool.domain.dto.RegisterSchoolClassDTO;
+import br.com.grimoire.hexagonalschool.domain.dto.ShowSchoolClassDTO;
 
 public interface SchoolClassServicePort {
 
-    List<SchoolClass> findAll();
+    List<ShowSchoolClassDTO> findAll();
 
-    SchoolClass findById(Long idSchoolClass); // TODO: Create ShowSchoolClassDTO
+    ShowSchoolClassDTO findById(Long idSchoolClass);
 
-    SchoolClass save(SchoolClass schoolClass);// TODO: Create RegisterSchoolClassDTO
+    ShowSchoolClassDTO save(RegisterSchoolClassDTO registerSchoolClassDTO);
 
-    void update(Long idsSchoolClass, SchoolClass schoolClass);
+    void update(Long idsSchoolClass, RegisterSchoolClassDTO registerSchoolClassDTO);
 
     void delete(Long idSchoolClass);
 }

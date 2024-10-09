@@ -20,7 +20,7 @@ public class StudentRepository implements StudentRepositoryPort {
     private final StudentRepositoryJPA studentRepositoryJPA;
 
     @Override
-    public List<Student> listStudent() {
+    public List<Student> findAll() {
         List<StudentEntity> studentEntityList = studentRepositoryJPA.findAll();
 
         return studentEntityList.isEmpty() ? new ArrayList<>()

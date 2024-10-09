@@ -6,7 +6,7 @@ import br.com.grimoire.hexagonalschool.domain.models.Student;
 
 public interface StudentRepositoryPort {
 
-    List<Student> listStudent();
+    List<Student> findAll();
 
     Student findById(Long idStudent);
 
