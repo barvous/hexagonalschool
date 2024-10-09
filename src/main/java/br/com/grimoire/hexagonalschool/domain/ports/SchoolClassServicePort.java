@@ -8,9 +8,9 @@ public interface SchoolClassServicePort {
 
     List<SchoolClass> findAll();
 
-    SchoolClass findById(Long idSchoolClass); // TODO: Create ShowSchoolClassDTO
+    SchoolClass findById(Long idSchoolClass);
 
-    SchoolClass save(SchoolClass schoolClass);// TODO: Create RegisterSchoolClassDTO
+    SchoolClass save(SchoolClass schoolClass);
 
     void update(Long idsSchoolClass, SchoolClass schoolClass);
 
