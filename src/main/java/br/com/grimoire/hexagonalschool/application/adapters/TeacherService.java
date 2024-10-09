@@ -1,4 +1,4 @@
-package br.com.grimoire.hexagonalschool.adapters;
+package br.com.grimoire.hexagonalschool.application.adapters;
 
 import java.util.List;
 
