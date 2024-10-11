@@ -33,13 +33,13 @@ public class SchoolClassService implements SchoolClassServicePort {
 
     @Override
     public ShowSchoolClassDTO save(RegisterSchoolClassDTO registerSchoolClassDTO) {
-        SchoolClass schoolClassDB = schoolClassRepositoryPort.save(registerSchoolClassDTO.toSchoolClass());
+        SchoolClass schoolClassDB = schoolClassRepositoryPort.save(registerSchoolClassDTO);
         return new ShowSchoolClassDTO(schoolClassDB);
     }
 
     @Override
     public void update(Long idsSchoolClass, RegisterSchoolClassDTO registerSchoolClassDTO) {
-        schoolClassRepositoryPort.update(idsSchoolClass, registerSchoolClassDTO.toSchoolClass());
+        schoolClassRepositoryPort.update(idsSchoolClass, registerSchoolClassDTO);
     }
 
     @Override

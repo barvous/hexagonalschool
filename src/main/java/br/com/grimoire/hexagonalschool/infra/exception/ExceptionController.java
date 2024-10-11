@@ -1,4 +1,4 @@
-package br.com.grimoire.hexagonalschool.application.controllers.exception;
+package br.com.grimoire.hexagonalschool.infra.exception;
 
 import java.util.Date;
 
@@ -9,10 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import br.com.grimoire.hexagonalschool.domain.models.exception.BadRequestException;
-import br.com.grimoire.hexagonalschool.domain.models.exception.InvalidSalaryException;
-import br.com.grimoire.hexagonalschool.domain.models.exception.NotFoundException;
-import br.com.grimoire.hexagonalschool.domain.models.exception.StandardError;
 import jakarta.servlet.http.HttpServletRequest;
 
 @ControllerAdvice

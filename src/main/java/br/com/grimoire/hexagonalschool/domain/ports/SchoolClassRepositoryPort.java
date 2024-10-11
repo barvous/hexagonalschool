@@ -2,6 +2,7 @@ package br.com.grimoire.hexagonalschool.domain.ports;
 
 import java.util.List;
 
+import br.com.grimoire.hexagonalschool.domain.dto.RegisterSchoolClassDTO;
 import br.com.grimoire.hexagonalschool.domain.models.SchoolClass;
 
 public interface SchoolClassRepositoryPort {
@@ -10,9 +11,9 @@ public interface SchoolClassRepositoryPort {
 
     SchoolClass findById(Long idSchoolClass);
 
-    SchoolClass save(SchoolClass schoolClass);
+    SchoolClass save(RegisterSchoolClassDTO schoolClassDTO);
 
-    void update(Long idSchoolClass, SchoolClass schoolClass);
+    void update(Long idSchoolClass, RegisterSchoolClassDTO schoolClassDTO);
 
     void delete(Long idSchoolClass);
 }

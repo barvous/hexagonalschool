@@ -2,7 +2,7 @@ package br.com.grimoire.hexagonalschool.domain.models;
 
 import java.time.LocalDateTime;
 
-import br.com.grimoire.hexagonalschool.domain.models.exception.InvalidSalaryException;
+import br.com.grimoire.hexagonalschool.infra.exception.InvalidSalaryException;
 
 public class Teacher extends Person {
 

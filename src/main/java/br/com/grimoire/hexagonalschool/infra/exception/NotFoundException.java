@@ -1,4 +1,4 @@
-package br.com.grimoire.hexagonalschool.domain.models.exception;
+package br.com.grimoire.hexagonalschool.infra.exception;
 
 public class NotFoundException extends RuntimeException {
 

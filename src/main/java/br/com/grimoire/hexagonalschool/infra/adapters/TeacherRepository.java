@@ -6,10 +6,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import br.com.grimoire.hexagonalschool.domain.models.Teacher;
-import br.com.grimoire.hexagonalschool.domain.models.exception.InternalServerException;
-import br.com.grimoire.hexagonalschool.domain.models.exception.NotFoundException;
 import br.com.grimoire.hexagonalschool.domain.ports.TeacherRespositoryPort;
 import br.com.grimoire.hexagonalschool.infra.entities.TeacherEntity;
+import br.com.grimoire.hexagonalschool.infra.exception.InternalServerException;
+import br.com.grimoire.hexagonalschool.infra.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service

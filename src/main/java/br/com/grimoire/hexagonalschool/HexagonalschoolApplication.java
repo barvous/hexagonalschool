@@ -12,5 +12,4 @@ public class HexagonalschoolApplication {
 
 }
 
-//TODO: Create adapters for the domain classes
 //TODO: Create endpoints to consume the domain entities

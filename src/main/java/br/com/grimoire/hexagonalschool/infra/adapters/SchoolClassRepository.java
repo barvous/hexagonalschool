@@ -5,11 +5,12 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import br.com.grimoire.hexagonalschool.domain.dto.RegisterSchoolClassDTO;
 import br.com.grimoire.hexagonalschool.domain.models.SchoolClass;
-import br.com.grimoire.hexagonalschool.domain.models.exception.InternalServerException;
-import br.com.grimoire.hexagonalschool.domain.models.exception.NotFoundException;
 import br.com.grimoire.hexagonalschool.domain.ports.SchoolClassRepositoryPort;
 import br.com.grimoire.hexagonalschool.infra.entities.SchoolClassEntity;
+import br.com.grimoire.hexagonalschool.infra.exception.InternalServerException;
+import br.com.grimoire.hexagonalschool.infra.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -17,15 +18,15 @@ import lombok.RequiredArgsConstructor;
 public class SchoolClassRepository implements SchoolClassRepositoryPort {
 
     private final SchoolClassRepositoryJPA schoolClassRepositoryJPA;
-    
+
     @Override
     public List<SchoolClass> findAll() {
         return schoolClassRepositoryJPA.findAll()
-        .stream()
-        .map(eachClass -> eachClass.toSchoolClass())
-        .toList();
+                .stream()
+                .map(eachClass -> eachClass.toSchoolClass())
+                .toList();
     }
-    
+
     @Override
     public SchoolClass findById(Long idSchoolClass) {
         SchoolClassEntity schoolClassEntity = schoolClassRepositoryJPA.findById(idSchoolClass)
@@ -35,12 +36,9 @@ public class SchoolClassRepository implements SchoolClassRepositoryPort {
     }
 
     @Override
-    public SchoolClass save(SchoolClass schoolClass) {
-        // TODO: Create a DTO to register an school, so that i dont have do to this "set
-        // null"
+    public SchoolClass save(RegisterSchoolClassDTO schoolClassDTO) {
 
-        schoolClass.setId(null);
-        SchoolClassEntity schoolClassEntity = new SchoolClassEntity(schoolClass);
+        SchoolClassEntity schoolClassEntity = new SchoolClassEntity(schoolClassDTO.toSchoolClass());
 
         try {
             schoolClassEntity = schoolClassRepositoryJPA.save(schoolClassEntity);
@@ -54,8 +52,9 @@ public class SchoolClassRepository implements SchoolClassRepositoryPort {
     }
 
     @Override
-    public void update(Long idSchoolClass, SchoolClass schoolClass) {
+    public void update(Long idSchoolClass, RegisterSchoolClassDTO schoolClassDTO) {
 
+        SchoolClass schoolClass = schoolClassDTO.toSchoolClass();
         SchoolClass schoolClassDB = findById(idSchoolClass);
 
         BeanUtils.copyProperties(schoolClass, schoolClassDB, "id");
