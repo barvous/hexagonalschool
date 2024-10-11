@@ -35,6 +35,11 @@ public class SchoolClassRepository implements SchoolClassRepositoryPort {
         return schoolClassEntity.toSchoolClass();
     }
 
+    private SchoolClassEntity findEntityById(Long idSchoolClass) {
+        return schoolClassRepositoryJPA.findById(idSchoolClass)
+                .orElseThrow(() -> new NotFoundException("School class not founded"));
+    }
+
     @Override
     public SchoolClass save(RegisterSchoolClassDTO schoolClassDTO) {
 
@@ -72,12 +77,12 @@ public class SchoolClassRepository implements SchoolClassRepositoryPort {
     }
 
     @Override
-    public void delete(Long idSchoolClass) {
+    public void deleteById(Long idSchoolClass) {
 
-        findById(idSchoolClass); // Just to make shure that this object exists in DB
+        SchoolClassEntity schoolClassEntity = findEntityById(idSchoolClass); // Make shure that this object exists in DB
 
         try {
-            schoolClassRepositoryJPA.deleteById(idSchoolClass);
+            schoolClassRepositoryJPA.delete(schoolClassEntity);
         } catch (Exception e) {
             e.printStackTrace();
             throw new InternalServerException("Failed to delete school class with id" + idSchoolClass);

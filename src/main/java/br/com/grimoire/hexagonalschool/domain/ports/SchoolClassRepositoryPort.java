@@ -15,5 +15,5 @@ public interface SchoolClassRepositoryPort {
 
     void update(Long idSchoolClass, RegisterSchoolClassDTO schoolClassDTO);
 
-    void delete(Long idSchoolClass);
+    void deleteById(Long idSchoolClass);
 }

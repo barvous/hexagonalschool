@@ -43,8 +43,8 @@ public class SchoolClassService implements SchoolClassServicePort {
     }
 
     @Override
-    public void delete(Long idSchoolClass) {
-        schoolClassRepositoryPort.delete(idSchoolClass);
+    public void deleteById(Long idSchoolClass) {
+        schoolClassRepositoryPort.deleteById(idSchoolClass);
     }
 
 }
