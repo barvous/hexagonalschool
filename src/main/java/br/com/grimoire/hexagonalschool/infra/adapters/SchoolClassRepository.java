@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import br.com.grimoire.hexagonalschool.domain.dto.RegisterSchoolClassDTO;
 import br.com.grimoire.hexagonalschool.domain.models.SchoolClass;
 import br.com.grimoire.hexagonalschool.domain.ports.SchoolClassRepositoryPort;
 import br.com.grimoire.hexagonalschool.infra.entities.SchoolClassEntity;
@@ -41,9 +40,9 @@ public class SchoolClassRepository implements SchoolClassRepositoryPort {
     }
 
     @Override
-    public SchoolClass save(RegisterSchoolClassDTO schoolClassDTO) {
+    public SchoolClass save(SchoolClass schoolClass) {
 
-        SchoolClassEntity schoolClassEntity = new SchoolClassEntity(schoolClassDTO.toSchoolClass());
+        SchoolClassEntity schoolClassEntity = new SchoolClassEntity(schoolClass);
 
         try {
             schoolClassEntity = schoolClassRepositoryJPA.save(schoolClassEntity);
@@ -57,9 +56,8 @@ public class SchoolClassRepository implements SchoolClassRepositoryPort {
     }
 
     @Override
-    public void update(Long idSchoolClass, RegisterSchoolClassDTO schoolClassDTO) {
+    public void update(Long idSchoolClass, SchoolClass schoolClass) {
 
-        SchoolClass schoolClass = schoolClassDTO.toSchoolClass();
         SchoolClass schoolClassDB = findById(idSchoolClass);
 
         BeanUtils.copyProperties(schoolClass, schoolClassDB, "id");
@@ -79,7 +77,7 @@ public class SchoolClassRepository implements SchoolClassRepositoryPort {
     @Override
     public void deleteById(Long idSchoolClass) {
 
-        SchoolClassEntity schoolClassEntity = findEntityById(idSchoolClass); // Make shure that this object exists in DB
+        SchoolClassEntity schoolClassEntity = findEntityById(idSchoolClass);
 
         try {
             schoolClassRepositoryJPA.delete(schoolClassEntity);

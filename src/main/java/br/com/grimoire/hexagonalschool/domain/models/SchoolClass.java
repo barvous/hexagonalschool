@@ -20,9 +20,10 @@ public class SchoolClass {
 
     }
 
-    public SchoolClass(String name, String description, Time completionTime, boolean finished) {
+    public SchoolClass(String name, String description, Teacher teacher, Time completionTime, boolean finished) {
         this.name = name;
         this.description = description;
+        this.teacher = teacher;
         this.completionTime = completionTime;
         this.finished = finished;
     }

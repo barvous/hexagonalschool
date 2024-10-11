@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import br.com.grimoire.hexagonalschool.domain.dto.RegisterSchoolClassDTO;
 import br.com.grimoire.hexagonalschool.domain.dto.ShowSchoolClassDTO;
 import br.com.grimoire.hexagonalschool.domain.models.SchoolClass;
+import br.com.grimoire.hexagonalschool.domain.models.Teacher;
 import br.com.grimoire.hexagonalschool.domain.ports.SchoolClassRepositoryPort;
 import br.com.grimoire.hexagonalschool.domain.ports.SchoolClassServicePort;
+import br.com.grimoire.hexagonalschool.infra.adapters.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -16,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class SchoolClassService implements SchoolClassServicePort {
 
     private final SchoolClassRepositoryPort schoolClassRepositoryPort;
+    private final TeacherRepository teacherRepositoryPort;
 
     @Override
     public List<ShowSchoolClassDTO> findAll() {
@@ -33,13 +36,20 @@ public class SchoolClassService implements SchoolClassServicePort {
 
     @Override
     public ShowSchoolClassDTO save(RegisterSchoolClassDTO registerSchoolClassDTO) {
-        SchoolClass schoolClassDB = schoolClassRepositoryPort.save(registerSchoolClassDTO);
+
+        Teacher teacherDB = teacherRepositoryPort.findById(registerSchoolClassDTO.getIdTeacher());
+        SchoolClass schoolToSave = registerSchoolClassDTO.toSchoolClass(teacherDB);
+
+        SchoolClass schoolClassDB = schoolClassRepositoryPort.save(schoolToSave);
         return new ShowSchoolClassDTO(schoolClassDB);
     }
 
     @Override
-    public void update(Long idsSchoolClass, RegisterSchoolClassDTO registerSchoolClassDTO) {
-        schoolClassRepositoryPort.update(idsSchoolClass, registerSchoolClassDTO);
+    public void update(Long idSchoolClass, RegisterSchoolClassDTO registerSchoolClassDTO) {
+
+        Teacher teacherDB = teacherRepositoryPort.findById(registerSchoolClassDTO.getIdTeacher());
+
+        schoolClassRepositoryPort.update(idSchoolClass, registerSchoolClassDTO.toSchoolClass(teacherDB));
     }
 
     @Override

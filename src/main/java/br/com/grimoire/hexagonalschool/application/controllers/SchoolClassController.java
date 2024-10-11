@@ -3,6 +3,7 @@ package br.com.grimoire.hexagonalschool.application.controllers;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ import br.com.grimoire.hexagonalschool.domain.ports.SchoolClassServicePort;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/classes")
+@RequestMapping("/v1/school-classes")
 @RequiredArgsConstructor
 public class SchoolClassController {
 
@@ -53,7 +54,7 @@ public class SchoolClassController {
     }
 
     @PutMapping(path = "/{id_class}")
-    public ResponseEntity<ShowSchoolClassDTO> updateSchoolClass(@PathVariable("id_class") Long idSchoolClass,
+    public ResponseEntity<Void> updateSchoolClass(@PathVariable("id_class") Long idSchoolClass,
             @RequestBody RegisterSchoolClassDTO registerSchoolClassDTO) {
 
         schoolClassServicePort.update(idSchoolClass, registerSchoolClassDTO);
@@ -62,8 +63,8 @@ public class SchoolClassController {
 
     }
 
-    @PutMapping(path = "/{id_class}")
-    public ResponseEntity<ShowSchoolClassDTO> deleteSchoolClassById(@PathVariable("id_class") Long idSchoolClass) {
+    @DeleteMapping(path = "/{id_class}")
+    public ResponseEntity<Void> deleteSchoolClassById(@PathVariable("id_class") Long idSchoolClass) {
 
         schoolClassServicePort.deleteById(idSchoolClass);
 

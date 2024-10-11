@@ -9,6 +9,11 @@ public class Student extends Person {
     List<SchoolClass> listSchoolClass = new ArrayList<>();
 
     public Student(Long id, String cpf, String fullName, String email, LocalDateTime birthdate,
+            boolean userActive) {
+        super(id, cpf, fullName, email, birthdate, userActive);
+    }
+
+    public Student(Long id, String cpf, String fullName, String email, LocalDateTime birthdate,
             List<SchoolClass> listSchoolClass,
             boolean userActive) {
         super(id, cpf, fullName, email, birthdate, userActive);

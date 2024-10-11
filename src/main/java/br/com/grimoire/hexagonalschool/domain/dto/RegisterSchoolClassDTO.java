@@ -3,6 +3,7 @@ package br.com.grimoire.hexagonalschool.domain.dto;
 import java.sql.Time;
 
 import br.com.grimoire.hexagonalschool.domain.models.SchoolClass;
+import br.com.grimoire.hexagonalschool.domain.models.Teacher;
 
 public class RegisterSchoolClassDTO {
 
@@ -61,8 +62,8 @@ public class RegisterSchoolClassDTO {
         this.finished = finished;
     }
 
-    public SchoolClass toSchoolClass() {
-        return new SchoolClass(name, description, completionTime, false);
+    public SchoolClass toSchoolClass(Teacher teacherDB) {
+        return new SchoolClass(name, description, teacherDB, completionTime, finished);
 
     }
 

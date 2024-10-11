@@ -41,11 +41,11 @@ public class TeacherController {
     }
 
     @PostMapping
-    public ResponseEntity<Long> saveTeacher(@RequestBody RegisterTeacherDTO registerTeacherDTO) {
+    public ResponseEntity<ShowTeacherDTO> saveTeacher(@RequestBody RegisterTeacherDTO registerTeacherDTO) {
 
-        Long idTeacher = teacherService.save(registerTeacherDTO).getId();
+        ShowTeacherDTO showTeacherDTO = teacherService.save(registerTeacherDTO);
 
-        return ResponseEntity.ok().body(idTeacher);
+        return ResponseEntity.ok().body(showTeacherDTO);
     }
 
     @PutMapping(path = "/{id_teacher}")
@@ -56,7 +56,7 @@ public class TeacherController {
 
         return ResponseEntity.ok().build();
     }
-    
+
     @DeleteMapping(path = "/{id_teacher}")
     public ResponseEntity<Void> deleteTeacher(@PathVariable("id_teacher") Long idTeacher) {
 

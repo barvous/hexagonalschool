@@ -12,4 +12,9 @@ public class HexagonalschoolApplication {
 
 }
 
-//TODO: Create endpoints to consume the domain entities
+// TODO: Create endpoints to consume the domain entities
+/*
+ * TODO: Create bussiness rules in JPA entities like:
+ * 	- Duplicate entry error for Teachers with the same CPF
+ * 	- Duplicate entry error for Students with the same CPF
+ */
