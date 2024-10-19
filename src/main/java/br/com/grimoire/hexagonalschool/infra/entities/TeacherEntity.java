@@ -25,7 +25,7 @@ public class TeacherEntity {
     @Column(name = "ID_TEACHER")
     private Long id;
 
-    @Column(name = "CPF_TEACHER")
+    @Column(name = "CPF_TEACHER", unique = true)
     private String cpf;
 
     @Column(name = "FULL_NAME_TEACHER")

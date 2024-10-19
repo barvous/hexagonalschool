@@ -29,7 +29,7 @@ public class StudentEntity {
     @Column(name = "ID_STUDENT")
     private Long id;
 
-    @Column(name = "CPF_STUDENT")
+    @Column(name = "CPF_STUDENT", unique = true)
     private String cpf;
 
     @Column(name = "FULL_NAME_STUDENT")
