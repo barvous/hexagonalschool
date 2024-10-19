@@ -18,7 +18,7 @@ import br.com.grimoire.hexagonalschool.domain.ports.SchoolClassServicePort;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/v1/school-classes")
+@RequestMapping("/api/v1/school-classes")
 @RequiredArgsConstructor
 public class SchoolClassController {
 

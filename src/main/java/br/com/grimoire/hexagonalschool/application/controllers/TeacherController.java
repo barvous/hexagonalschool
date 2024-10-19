@@ -18,7 +18,7 @@ import br.com.grimoire.hexagonalschool.domain.dto.ShowTeacherDTO;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/v1/teachers")
+@RequestMapping("/api/v1/teachers")
 @RequiredArgsConstructor
 public class TeacherController {
 
